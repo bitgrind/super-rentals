@@ -13,7 +13,11 @@ export default Ember.Route.extend({
     },
 
     update(rental, params) {
-     debugger;
+      Object.keys(params).forEach(function(key) {
+       if(params[key]!==undefined) {
+         rental.set(key,params[key]);
+       }
+      });
      rental.save();
      this.transitionTo('index');
    },
